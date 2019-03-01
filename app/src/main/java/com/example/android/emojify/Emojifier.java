@@ -92,9 +92,9 @@ class Emojifier {
         Toast.makeText(context, "leftEyeOpenProb: " + face.getIsLeftEyeOpenProbability(), Toast.LENGTH_SHORT).show();
         Toast.makeText(context, "rightEyeOpenProb: " + face.getIsRightEyeOpenProbability(), Toast.LENGTH_SHORT).show();
 
-        // TODO (3): Create threshold constants for a person smiling, and and eye being open by taking pictures of yourself and your friends and noting the logs.
-        // TODO (4): Create 3 boolean variables to track the state of the facial expression based on the thresholds you set in the previous step: smiling, left eye closed, right eye closed.
-        // TODO (5): Create an if/else system that selects the appropriate emoji based on the above booleans and log the result.
+        // OK (3): Create threshold constants for a person smiling, and and eye being open by taking pictures of yourself and your friends and noting the logs.
+        // OK (4): Create 3 boolean variables to track the state of the facial expression based on the thresholds you set in the previous step: smiling, left eye closed, right eye closed.
+        // OK (5): Create an if/else system that selects the appropriate emoji based on the above booleans and log the result.
 
         boolean smiling = face.getIsSmilingProbability() > SMILING_PROB_THRESHOLD;
         boolean leftEyeClosed = face.getIsLeftEyeOpenProbability() > EYE_OPEN_PROB_THRESHOLD;
@@ -102,22 +102,22 @@ class Emojifier {
 
         Emoji emoji;
         if(smiling) {
-            /*if(leftEyeClosed && !rightEyeClosed) {
-                emoji = Emoji.LEFT_WINK_FROWN; //olhar esquerdo piscando
+            if(leftEyeClosed && !rightEyeClosed) {
+                emoji = Emoji.LEFT_WINK; //olhar esquerdo piscando
             } else if(rightEyeClosed && !leftEyeClosed) {
-                emoji = Emoji.RIGHT_WINK_FROWN;
+                emoji = Emoji.RIGHT_WINK;
             } else if(leftEyeClosed) {
-                emoji = Emoji.CLOSE_EYE_FROWN;
+                emoji = Emoji.CLOSED_EYE_SMILE;
             } else {
-                emoji = Emoji.FROWN;
-            }*/
+                emoji = Emoji.SMILE;
+            }
         } else {
             if(leftEyeClosed && !rightEyeClosed) {
                 emoji = Emoji.LEFT_WINK_FROWN; //olhar esquerdo piscando
             } else if(rightEyeClosed && !leftEyeClosed) {
                 emoji = Emoji.RIGHT_WINK_FROWN;
             } else if(leftEyeClosed) {
-                emoji = Emoji.CLOSE_EYE_FROWN;
+                emoji = Emoji.CLOSED_EYE_FROWN;
             } else {
                 emoji = Emoji.FROWN;
             }

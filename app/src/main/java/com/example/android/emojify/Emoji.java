@@ -8,5 +8,5 @@ public enum Emoji {
     LEFT_WINK_FROWN,
     RIGHT_WINK_FROWN,
     CLOSED_EYE_SMILE,
-    CLOSE_EYE_FROWN;
+    CLOSED_EYE_FROWN
 }
