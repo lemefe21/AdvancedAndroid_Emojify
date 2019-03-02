@@ -34,7 +34,7 @@ class Emojifier {
 
     private static final double SMILING_PROB_THRESHOLD = .15;
     private static final double EYE_OPEN_PROB_THRESHOLD = .5;
-    private static final float EMOJI_SCALE_FACTOR = .9f;
+    private static final float EMOJI_SCALE_FACTOR = 1.5f;
 
     /**
      * Method for detecting faces in a bitmap.
@@ -87,6 +87,30 @@ class Emojifier {
                         emojiBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.frown);
                         break;
 
+                    case LEFT_WINK:
+                        emojiBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.leftwink);
+                        break;
+
+                    case RIGHT_WINK:
+                        emojiBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.rightwink);
+                        break;
+
+                    case LEFT_WINK_FROWN:
+                        emojiBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.leftwinkfrown);
+                        break;
+
+                    case RIGHT_WINK_FROWN:
+                        emojiBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.rightwinkfrown);
+                        break;
+
+                    case CLOSED_EYE_SMILE:
+                        emojiBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.closed_smile);
+                        break;
+
+                    case CLOSED_EYE_FROWN:
+                        emojiBitmap = BitmapFactory.decodeResource(context.getResources(), R.drawable.closed_frown);
+                        break;
+
                     default:
                         emojiBitmap = null;
                         Toast.makeText(context, R.string.no_emoji, Toast.LENGTH_SHORT).show();
@@ -97,6 +121,7 @@ class Emojifier {
                 // OK (5): Create a switch statement on the result of the whichEmoji() call, and assign the proper emoji bitmap to the variable you created
                 // OK (8): Call addBitmapToFace(), passing in the resultBitmap, the emojiBitmap and the Face  object, and assigning the result to resultBitmap
 
+                //increment emojis in faces
                 resultBitmap = addBitmapToFace(resultBitmap, emojiBitmap, face);
 
             }
@@ -186,7 +211,7 @@ class Emojifier {
 
         //emoji position
         float emojiPositionX = (face.getPosition().x + face.getWidth() / 2) - emojiBitmap.getWidth() / 2;
-        float emojiPositionY = (face.getPosition().y + face.getHeight() / 2) - emojiBitmap.getHeight() / 2;
+        float emojiPositionY = (face.getPosition().y + face.getHeight() / 2) - emojiBitmap.getHeight() / 3;
 
         //draw bitmap in canvas
         Canvas canvas = new Canvas(resultBitmap);
@@ -194,6 +219,7 @@ class Emojifier {
         canvas.drawBitmap(emojiBitmap, emojiPositionX, emojiPositionY, null);
 
         return resultBitmap;
+
     }
 
 
